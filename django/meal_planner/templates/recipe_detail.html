@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meal Planner Dashboard</title>
+	<style>
+		.recipe-details {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			overflow: auto;
+			background-color: #f2f2f2;
+			padding: 20px;
+			box-sizing: border-box;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Meal Planner Dashboard</h1>
+	<h2>Week of {{ week.start_date }}</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>Recipes</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for day in days %}
+			<tr>
+				<td>{{ day.name }}</td>
+				<td>
+					{% for recipe in day.recipes.all %}
+					<a href="#" class="recipe-link" data-recipe-id="{{ recipe.id }}">{{ recipe.name }}</a><br>
+					{% endfor %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div id="recipe-details-container">
+		<div class="recipe-details" id="recipe-details">
+			<h2 id="recipe-name"></h2>
+			<h3>Ingredients:</h3>
+			<ul id="recipe-ingredients"></ul>
+			<h3>Instructions:</h3>
+			<p id="recipe-instructions"></p>
+		</div>
+	</div>
+	<script>
+		// TODO: Add JavaScript code here
+	</script>
+</body>
+</html>
