@@ -10,7 +10,7 @@ def get_directory_tree(startpath, prefix="", is_last=False, gitignore_patterns=N
     """
     if gitignore_patterns is None:
         gitignore_patterns = []
-    
+
     tree = ""
     if os.path.isdir(startpath):
         dirname = os.path.basename(startpath)
@@ -36,7 +36,7 @@ def get_directory_tree(startpath, prefix="", is_last=False, gitignore_patterns=N
 
             # check if the file should be ignored
             should_ignore = False
-            if file.startswith('.') or any(fnmatch.fnmatch(file, p) for p in gitignore_patterns):
+            if file.startswith('.') or any(fnmatch.fnmatch(file, p) for p in gitignore_patterns) or file == '__pycache__':
                 should_ignore = True
             elif os.path.isdir(file_path):
                 should_ignore = False
@@ -52,7 +52,7 @@ def get_directory_tree(startpath, prefix="", is_last=False, gitignore_patterns=N
                 tree += prefix + ("└── " if is_last else "├── ") + file + "\n"
 
     return tree
-      
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage: python describe_dir.py <path>")
