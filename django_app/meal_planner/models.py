@@ -18,12 +18,26 @@ class Recipe(models.Model):
     Model to hold a recipe, along with its ingredients and instructions.
     """
     name = models.CharField(max_length=100)
-    instructions = models.TextField()
 
     def __str__(self):
         return self.name
-    
-    
+
+
+class Instruction(models.Model):
+    """
+    Model to hold an instruction for a recipe.
+    """
+    step_number = models.PositiveIntegerField()
+    description = models.TextField()
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['step_number']
+
+    def __str__(self):
+        return f"Step {self.step_number}: {self.description}"
+
+
 class Week(models.Model):
     """
     Model to hold a week of meal planning.

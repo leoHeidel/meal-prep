@@ -4,7 +4,6 @@ meal-prep/                          # root directory for the meal planner app pr
 ├── gpt_utils/                      # directory for utility functions for the project
 │   ├── describe_dir.py             # script to print a directory tree structure
 │   ├── private_template.py         # template for sensitive configuration settings (not committed to version control)
-│   ├── __init__.py                 # empty init file to indicate a package
 │   └── update_readme.py            # script to automatically update the project README file
 ├── recipes-examples.md             # file with recipe examples for testing
 ├── start_server.sh                 # shell script to activate conda environment and start Django server
@@ -13,17 +12,14 @@ meal-prep/                          # root directory for the meal planner app pr
 └── django/                         # directory for the Django project
     ├── PrepPilot/                  # directory for a previously unused Django project (unused)
     │   ├── asgi.py                 # ASGI configuration
-    │   ├── __init__.py             # empty init file to indicate a package
     │   ├── settings.py             # project-level settings
     │   ├── urls.py                 # project-level URL configuration
     │   └── wsgi.py                 # WSGI configuration
     ├── meal_planner/               # directory for the meal planning app
     │   ├── migrations/            # directory for Django database migrations
     │   │   ├── 0002_day_recipes.py # migration for adding the ManyToManyField for recipes in Day model
-    │   │   ├── __init__.py
     │   │   └── 0001_initial.py    # migration for creating the Week, Day, Recipe, and Ingredient models
     │   ├── models.py              # file defining the Week, Day, Recipe, and Ingredient models
-    │   ├── __init__.py            # empty init file to indicate a package
     │   ├── apps.py                # file defining the MealPlannerConfig app configuration class
     │   ├── admin.py               # file defining the admin interface for the Week, Day, Recipe, and Ingredient models
     │   ├── templates/             # directory for HTML templates used by the meal planning app

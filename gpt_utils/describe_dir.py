@@ -4,6 +4,12 @@ import os
 import sys
 import fnmatch
 
+
+IGNORED = [
+    '__init__.py',
+    '__pycache__',
+]
+
 def get_directory_tree(startpath, prefix="", is_last=False, gitignore_patterns=None):
     """
     Recursively returns the directory tree starting from the given startpath, ignoring files and directories that would be ignored by gitignore, as well as those starting with a dot.
@@ -36,7 +42,7 @@ def get_directory_tree(startpath, prefix="", is_last=False, gitignore_patterns=N
 
             # check if the file should be ignored
             should_ignore = False
-            if file.startswith('.') or any(fnmatch.fnmatch(file, p) for p in gitignore_patterns) or file == '__pycache__':
+            if file.startswith('.') or any(fnmatch.fnmatch(file, p) for p in gitignore_patterns) or file in IGNORED:
                 should_ignore = True
             elif os.path.isdir(file_path):
                 should_ignore = False

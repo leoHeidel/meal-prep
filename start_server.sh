@@ -4,6 +4,6 @@
 source activate meal-prep
 
 # Start the Django development server
-cd django/
+cd django_app/
 python manage.py runserver
 

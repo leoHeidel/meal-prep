@@ -1,7 +1,7 @@
 
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
-from meal_planner.models import Week, Day, Recipe, Ingredient
+from meal_planner.models import Week, Day, Recipe, Ingredient, Instruction
 
 def dashboard(request):
     # Get the most recent week
@@ -27,15 +27,23 @@ def recipe_detail_json(request, recipe_id):
     # Get the ingredients for the recipe
     ingredients = Ingredient.objects.filter(recipe=recipe)
 
+    # Get the instructions for the recipe
+    instructions = Instruction.objects.filter(recipe=recipe)
+
     # Create a dictionary with the recipe data
     recipe_data = {
         'name': recipe.name,
-        'instructions': recipe.instructions,
         'ingredients': [
             {
                 'name': ingredient.name,
                 'quantity': ingredient.quantity
             } for ingredient in ingredients
+        ],
+        'instructions': [
+            {
+                'step_number': instruction.step_number,
+                'description': instruction.description
+            } for instruction in instructions
         ]
     }
 

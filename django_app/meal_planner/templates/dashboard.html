@@ -46,7 +46,7 @@
 			<h3>Ingredients:</h3>
 			<ul id="recipe-ingredients"></ul>
 			<h3>Instructions:</h3>
-			<p id="recipe-instructions"></p>
+			<ol id="recipe-instructions"></ol> <!-- Updated to an ordered list -->
 		</div>
 	</div>
 	<script>
@@ -66,7 +66,7 @@
 			.then(recipe => {
 				recipeName.textContent = recipe.name;
 				recipeIngredients.innerHTML = recipe.ingredients.map(ingredient => `<li>${ingredient.name} - ${ingredient.quantity}</li>`).join('');
-				recipeInstructions.textContent = recipe.instructions;
+				recipeInstructions.innerHTML = recipe.instructions.map(instruction => `<li>Step ${instruction.step_number}: ${instruction.description}</li>`).join(''); // Updated to generate an ordered list
 				recipeDetails.style.display = 'block';
 			})
 			.catch(error => {
