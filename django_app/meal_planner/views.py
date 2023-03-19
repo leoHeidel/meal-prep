@@ -1,8 +1,12 @@
+import json
 
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from meal_planner.models import Week, Day, Recipe, Ingredient, Instruction
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.core import serializers
 
+@ensure_csrf_cookie
 def dashboard(request):
     # Get the most recent week
     week = Week.objects.latest('start_date')
@@ -49,3 +53,19 @@ def recipe_detail_json(request, recipe_id):
 
     # Return the recipe data as JSON
     return JsonResponse(recipe_data)
+
+
+def generate_recipe_for_day(request, day_id):
+    # Extract the user_message from the request body
+    data = json.loads(request.body)
+    user_message = data.get('user_message', '')
+
+    # Your logic for generating a recipe based on the user_message and adding it to the day
+    # ... (your logic here)
+
+    new_recipe = get_object_or_404(Recipe, id=2)
+    # Serialize the new recipe to JSON
+    new_recipe_json = serializers.serialize('json', [new_recipe])
+
+    # Return a JsonResponse containing the new recipe data
+    return JsonResponse({'result': 'success', 'new_recipe': new_recipe_json})
