@@ -1,7 +1,8 @@
-import React from "react";
-
+// App.js
+import React from 'react';
 import './App.css';
-import TimeTable from "./TimeTable";
+import TimeTable from './TimeTable';
+import Mealdetail from './Mealdetail'; // Import the Mealdetail component
 
 export default function App() {
   return (
@@ -9,7 +10,9 @@ export default function App() {
       <div className="panel left">
         <TimeTable />
       </div>
-      <div className="panel right">Right panel content goes here</div>
+      <div className="panel right">
+        <Mealdetail /> {/* Include the Mealdetail component */}
+      </div>
     </div>
   );
 }
