@@ -42,3 +42,20 @@ meal-prep/
 In my models.py file change the Recipe class so that the instruction are a list instead of a single field. Currently in model we have:
 
 You are a helpful coding assistant, we are currently coding a meal planer app. This is the current architecture of the project:
+
+
+
+## Settup steps
+
+
+```
+cd react_frontend
+npm install
+```
+
+## Run the React app
+
+```
+cd react_frontend
+npm start
+```
