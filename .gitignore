@@ -349,5 +349,28 @@ pyrightconfig.json
 # End of
 https://www.toptal.com/developers/gitignore/api/python,macos,django,visualstudiocode
 
+# Created by https://www.toptal.com/developers/gitignore/api/react
+# Edit at https://www.toptal.com/developers/gitignore?templates=react
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+# End of https://www.toptal.com/developers/gitignore/api/react
+
+
 private.py
 draft.ipynb
+test_react
