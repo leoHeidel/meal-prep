@@ -15,7 +15,7 @@ function TimeTable() {
     "Friday",
     "Saturday",
     "Sunday",
-  ];
+];
 
   const [recipes, setRecipes] = useState([
     {
@@ -40,32 +40,40 @@ function TimeTable() {
       },
       ]);
 
-      const moveRecipe = useCallback((dragIndex, hoverIndex, hoverDay) => {
-        setRecipes((prevRecipes) =>
-          update(prevRecipes, {
-            $splice: [
-              [dragIndex, 1],
-              [hoverIndex, 0, { ...prevRecipes[dragIndex], day: hoverDay }],
-            ],
-          }),
-        );
-      }, []);
-
-  const renderRecipe = useCallback(
-    (recipe, index) => {
-      return (
-        <Recipe
-          key={recipe.id}
-          index={index}
-          id={recipe.id}
-          day={recipe.day}
-          text={recipe.text}
-          moveRecipe={moveRecipe}
-        />
-      );
-    },
-    [moveRecipe]
+const moveRecipe = useCallback((dragIndex, hoverIndex, hoverDay) => {
+  setRecipes((prevRecipes) =>
+    update(prevRecipes, {
+      $splice: [
+        [dragIndex, 1],
+        [hoverIndex, 0, { ...prevRecipes[dragIndex], day: hoverDay }],
+      ],
+    }),
   );
+}, []);
+
+const renderRecipe = useCallback(
+  (recipe, index) => {
+    return (
+      <Recipe
+        key={recipe.id}
+        index={index}
+        id={recipe.id}
+        day={recipe.day}
+        text={recipe.text}
+        moveRecipe={moveRecipe}
+      />
+    );
+  },
+  [moveRecipe]
+);
+
+function handleAdd(day) {
+  const text = prompt("Enter the name of the new recipe:");
+  if (text) {
+    const newRecipe = { day: day, text: text };
+    setRecipes([...recipes, newRecipe]);
+  }
+}
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -80,6 +88,9 @@ function TimeTable() {
                   .filter((recipe) => recipe.day === day)
                   .map((recipe) => renderRecipe(recipe, recipes.indexOf(recipe)))
                 }
+                <div className="add-recipe-widget" onClick={() => handleAdd(day)}>
+                  <i className="fas fa-plus"></i>
+                </div>
               </div>
             </div>
           ))}

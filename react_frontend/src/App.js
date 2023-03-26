@@ -2,7 +2,8 @@
 import React from 'react';
 import './App.css';
 import TimeTable from './TimeTable';
-import Mealdetail from './Mealdetail'; // Import the Mealdetail component
+import Mealdetail from './Mealdetail';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 export default function App() {
   return (

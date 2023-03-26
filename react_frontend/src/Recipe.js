@@ -10,6 +10,7 @@ const style = {
   cursor: "move",
 };
 
+
 export const Recipe = ({ id, day, text, index, moveRecipe }) => {
   const ref = useRef(null);
   const [{ handlerId }, drop] = useDrop({
@@ -55,3 +56,5 @@ export const Recipe = ({ id, day, text, index, moveRecipe }) => {
     </div>
   );
 };
+
+// export const Day = (day)
