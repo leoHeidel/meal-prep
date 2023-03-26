@@ -1,0 +1,44 @@
+/* Mealdetail.css */
+.mealdetail {
+    padding: 1rem;
+  }
+  
+  .rectangle {
+    background-color: #f9e4e4f2;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+  
+  .for-who {
+    margin-bottom: 1rem;
+  }
+  
+  .for-who label {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+    .user-request {
+        width: 90%;
+    }
+
+    .user-request button {
+        display: block;
+        margin-top: 10px; /* Add some spacing between the text area and the button */
+      }
+      
+  button {
+    background-color: #FF9899;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #fda5a6;
+  }
