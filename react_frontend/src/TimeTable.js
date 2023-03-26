@@ -40,12 +40,12 @@ function TimeTable() {
       },
       ]);
 
-      const moveRecipe = useCallback((dragIndex, hoverIndex) => {
+      const moveRecipe = useCallback((dragIndex, hoverIndex, hoverDay) => {
         setRecipes((prevRecipes) =>
           update(prevRecipes, {
             $splice: [
               [dragIndex, 1],
-              [hoverIndex, 0, prevRecipes[dragIndex]],
+              [hoverIndex, 0, { ...prevRecipes[dragIndex], day: hoverDay }],
             ],
           }),
         );
@@ -58,6 +58,7 @@ function TimeTable() {
           key={recipe.id}
           index={index}
           id={recipe.id}
+          day={recipe.day}
           text={recipe.text}
           moveRecipe={moveRecipe}
         />
@@ -77,7 +78,8 @@ function TimeTable() {
                 <div className="day-widget">{day}</div>
                 {recipes
                   .filter((recipe) => recipe.day === day)
-                  .map((recipe, i) => renderRecipe(recipe, i))}
+                  .map((recipe) => renderRecipe(recipe, recipes.indexOf(recipe)))
+                }
               </div>
             </div>
           ))}
