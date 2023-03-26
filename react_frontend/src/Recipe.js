@@ -5,7 +5,7 @@ import { ItemTypes } from "./ItemTypes";
 const style = {
   border: "1px dashed gray",
   padding: "0.5rem 1rem",
-  marginBottom: ".5rem",
+  marginLeft: ".5rem",
   backgroundColor: "white",
   cursor: "move",
 };
@@ -32,21 +32,21 @@ export const Recipe = ({ id, text, index, moveRecipe }) => {
         // Determine rectangle on screen
         const hoverBoundingRect = ref.current?.getBoundingClientRect()
         // Get vertical middle
-        const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+        const hoverMiddleX =
+        (hoverBoundingRect.right - hoverBoundingRect.left) / 2
         // Determine mouse position
         const clientOffset = monitor.getClientOffset()
         // Get pixels to the top
-        const hoverClientY = clientOffset.y - hoverBoundingRect.top
+        const hoverClientX = clientOffset.x - hoverBoundingRect.top
         // Only perform the move when the mouse has crossed half of the items height
         // When dragging downwards, only move when the cursor is below 50%
         // When dragging upwards, only move when the cursor is above 50%
         // Dragging downwards
-        if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        if (dragIndex < hoverIndex && hoverClientX < hoverMiddleX) {
         return
         }
         // Dragging upwards
-        if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        if (dragIndex > hoverIndex && hoverClientX > hoverMiddleX) {
         return
         }
         // Time to actually perform the action
