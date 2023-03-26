@@ -2,16 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -28,11 +18,70 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.left {
+  flex: 1.618;
+  background-color: #eee;
+}
+
+.right {
+  flex: 1;
+  background-color: #ddd;
+}
+
+.timetable-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.day {
+  flex: 1 1 auto;
+  padding: 20px;
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.day:last-child {
+  border-bottom: none;
+}
+
+.day-widget {
+  width: 80px;
+  height: 80px;
+  background-color: #8ac6d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.widget {
+  width: 80px;
+  height: 80px;
+  background-color: #ffb347;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-left: auto;
 }
