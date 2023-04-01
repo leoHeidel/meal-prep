@@ -53,7 +53,7 @@ if __name__ == '__main__':
     ```
     {new_version}
     ```
-    Update the comment at the end of each line for the new architecture, only anwser with that."""
+    Update the comment at the end of each line for the new architecture, only answer with that, and be concise."""
     print(prompt)
     # gpt_querry = {
     #     "model": "gpt-3.5-turbo",
