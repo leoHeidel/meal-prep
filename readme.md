@@ -4,35 +4,52 @@
 ```
 meal-prep/
 ├── gpt_utils/
-│   ├── describe_dir.py             # script to print a directory tree structure
-│   ├── private_template.py         # template for sensitive configuration settings (not committed to version control)
-│   ├── update_readme.py            # script to automatically update the project README file
-├── django_app/                     # directory for the Django project
-│   ├── PrepPilot/                  # directory for Django project configuration
-│   │   ├── asgi.py                 # ASGI configuration
-│   │   ├── settings.py             # project-level settings
-│   │   ├── urls.py                 # project-level URL configuration
-│   │   └── wsgi.py                 # WSGI configuration
-│   ├── meal_planner/               # directory for the meal planning app
-│   │   ├── migrations/             # directory for Django database migrations
-│   │   │   ├── 0002_day_recipes.py # migration for adding the ManyToManyField for recipes in Day model
-│   │   │   ├── 0003_remove_recipe_instructions_instruction.py # migration for removing instructions field from Recipe model
-│   │   │   └── 0001_initial.py     # migration for creating the Week, Day, Recipe, and Ingredient models
-│   │   ├── models.py               # file defining the Week, Day, Recipe, and Ingredient models
-│   │   ├── apps.py                 # file defining the MealPlannerConfig app configuration class
-│   │   ├── admin.py                # file defining the admin interface for the Week, Day, Recipe, and Ingredient models
-│   │   ├── templates/              # directory for HTML templates used by the meal planning app
-│   │   │   ├── recipe_detail.html  # template for displaying recipe details
-│   │   │   └── dashboard.html      # template for displaying the meal planning dashboard
-│   │   ├── db_utils.py             # utility functions for working with the database
-│   │   ├── tests.py                # file for unit tests for the meal planning app
-│   │   ├── urls.py                 # file defining URL patterns for the meal planning app
-│   │   └── views.py                # file defining view functions for the meal planning app
-│   └── manage.py                   # command-line utility for interacting with Django project
-├── recipes-examples.md             # file with recipe examples for testing
-├── start_server.sh                 # shell script to activate conda environment and start Django server
-├── python_env.text                 # text file containing the list of dependencies for the project environment
-└── readme.md                       # file with instructions and info about the project
+│   ├── describe_dir.py             # directory tree structure script
+│   ├── private_template.py         # sensitive config settings template
+│   ├── prompts.py                  # GPT prompts
+│   └── update_readme.py            # update README script
+├── django_app/
+│   ├── PrepPilot/
+│   │   ├── asgi.py                 # ASGI config
+│   │   ├── settings.py             # project settings
+│   │   ├── urls.py                 # project URL config
+│   │   └── wsgi.py                 # WSGI config
+│   ├── meal_planner/
+│   │   ├── migrations/...          # database migrations
+│   │   ├── models.py               # app models
+│   │   ├── apps.py                 # app config
+│   │   ├── admin.py                # admin interface
+│   │   ├── templates/              # HTML templates
+│   │   │   ├── recipe_detail.html  # recipe details template
+│   │   │   └── dashboard.html      # dashboard template
+│   │   ├── db_utils.py             # database utils
+│   │   ├── tests.py                # unit tests
+│   │   ├── urls.py                 # app URL patterns
+│   │   └── views.py                # view functions
+│   └── manage.py                   # Django command-line utility
+├── recipes-examples.md             # recipe examples
+├── start_server.sh                 # start server script
+├── python_env.text                 # dependencies list
+├── readme.md                       # project info and instructions
+└── react_frontend/
+    ├── README.md                   # frontend README
+    ├── public/...                  # public assets
+    ├── package-lock.json           # dependency lock file
+    ├── package.json                # dependency management
+    └── src/                        # frontend source
+        ├── reportWebVitals.js      # web vitals report
+        ├── TimeTable.css           # timetable styles
+        ├── Mealdetail.js           # meal detail component
+        ├── App.css                 # app styles
+        ├── Mealdetail.css          # meal detail styles
+        ├── index.js                # entry point
+        ├── index.css               # index styles
+        ├── Recipe.js               # recipe component
+        ├── App.test.js             # app tests
+        ├── ItemTypes.js            # item types definition
+        ├── setupTests.js           # test setup
+        ├── TimeTable.js            # timetable component
+        └── App.js                  # main app component
 ```
 
 ##
