@@ -31,7 +31,7 @@ function Mealdetail() {
 
 
   return (
-    <div className="mealdetail" style={{ backgroundColor: '#FFE5B4' }}>
+    <div className="mealdetail" style={{ backgroundColor: '#FFFFFF' }}>
       <h2>{recipe}</h2>
       <div className="rectangle">
         <h3>Preparation Steps</h3>

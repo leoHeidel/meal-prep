@@ -4,7 +4,7 @@
   }
   
   .rectangle {
-    background-color: #f9e4e4f2;
+    background-color: #FFE5B4;
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
@@ -13,12 +13,14 @@
   .for-who {
     margin-bottom: 1rem;
   }
-  
+
   .for-who label {
     display: inline-block;
     margin-right: 1rem;
+    color: #333;
   }
-
+  
+  
     .user-request {
         width: 90%;
     }

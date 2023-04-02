@@ -78,7 +78,7 @@ function handleAdd(day) {
   return (
     <DndProvider backend={HTML5Backend}>
       <div>
-        <h1>Time Table Content</h1>
+        <h2>Time Table Content</h2>
         <div className="timetable-grid">
           {days.map((day) => (
             <div key={day} className="day">
