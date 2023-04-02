@@ -6,7 +6,7 @@ class Ingredient(models.Model):
     Model to hold an ingredient for a recipe.
     """
     name = models.CharField(max_length=100)
-    quantity = models.CharField(max_length=100)
+    quantity = models.CharField(max_length=100, blank=True)
     recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -54,7 +54,7 @@ class Day(models.Model):
     """
     name = models.CharField(max_length=100)
     week = models.ForeignKey(Week, on_delete=models.CASCADE)
-    recipes = models.ManyToManyField(Recipe)
+    recipes = models.ManyToManyField(Recipe, blank=True)
 
     def __str__(self):
         return f"{self.name} ({self.week})"

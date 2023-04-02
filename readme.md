@@ -1,6 +1,5 @@
 ## Project architecture
-
-
+Here is the architecture of the project:
 ```
 meal-prep/
 ├── gpt_utils/
