@@ -6,16 +6,12 @@ from meal_planner.models import Week, Day, Recipe, Ingredient, Instruction
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.core import serializers
 
-@ensure_csrf_cookie
 def dashboard(request):
-    # Get the most recent week
     week = Week.objects.latest('start_date')
-
-    # Get the days for the week and their associated recipes
-    days = Day.objects.filter(week=week).prefetch_related('recipes')
-
-    # Render the data to the dashboard template
-    return render(request, 'dashboard.html', {'week': week, 'days': days})
+    data = {
+        'week_name' : str(week)
+    }
+    return JsonResponse(data)
 
 def recipe_detail(request, recipe_id):
     # Get the recipe object from the database
