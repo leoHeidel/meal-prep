@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect} from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import update from "immutability-helper";
@@ -7,6 +7,19 @@ import { Recipe } from "./Recipe";
 import "./TimeTable.css";
 
 function TimeTable() {
+
+  const [weekName, setWeekName] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/dashboard/')
+      .then(response => response.json())
+      .then(data => setWeekName(data.week_name))
+      .catch(error => console.error('Error fetching data:', error))
+      .finally(() => {
+        let response = '';
+        console.log('Response:', response);
+      });  }, []);
+
   const days = [
     "Monday",
     "Tuesday",
@@ -40,45 +53,45 @@ function TimeTable() {
       },
       ]);
 
-const moveRecipe = useCallback((dragIndex, hoverIndex, hoverDay) => {
-  setRecipes((prevRecipes) =>
-    update(prevRecipes, {
-      $splice: [
-        [dragIndex, 1],
-        [hoverIndex, 0, { ...prevRecipes[dragIndex], day: hoverDay }],
-      ],
-    }),
-  );
-}, []);
-
-const renderRecipe = useCallback(
-  (recipe, index) => {
-    return (
-      <Recipe
-        key={recipe.id}
-        index={index}
-        id={recipe.id}
-        day={recipe.day}
-        text={recipe.text}
-        moveRecipe={moveRecipe}
-      />
+  const moveRecipe = useCallback((dragIndex, hoverIndex, hoverDay) => {
+    setRecipes((prevRecipes) =>
+      update(prevRecipes, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, { ...prevRecipes[dragIndex], day: hoverDay }],
+        ],
+      }),
     );
-  },
-  [moveRecipe]
-);
+  }, []);
 
-function handleAdd(day) {
-  const text = prompt("Enter the name of the new recipe:");
-  if (text) {
-    const newRecipe = { day: day, text: text };
-    setRecipes([...recipes, newRecipe]);
+  const renderRecipe = useCallback(
+    (recipe, index) => {
+      return (
+        <Recipe
+          key={recipe.id}
+          index={index}
+          id={recipe.id}
+          day={recipe.day}
+          text={recipe.text}
+          moveRecipe={moveRecipe}
+        />
+      );
+    },
+    [moveRecipe]
+  );
+
+  function handleAdd(day) {
+    const text = prompt("Enter the name of the new recipe:");
+    if (text) {
+      const newRecipe = { day: day, text: text };
+      setRecipes([...recipes, newRecipe]);
+    }
   }
-}
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div>
-        <h2>Time Table Content</h2>
+      <h2>{weekName} Time Table Content</h2>
         <div className="timetable-grid">
           {days.map((day) => (
             <div key={day} className="day">
